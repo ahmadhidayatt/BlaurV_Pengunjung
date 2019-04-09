@@ -46,10 +46,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="banner-pos banner1">
                 <div class="container">
                    <div class="banner-info animated wow slideInUp" data-wow-delay=".5s">
-                        <h2>
+                        <h1 style="color: #c46d1b">
                             Selamat datang di Blaur Vacation  <span><br/><br><i>Perjalanan ke Pulau Seribu</i </span>
-                        </h2>
-                        <p>Booking Menjadi Cepat dan Gampang!</p>
+                        </h1>
+                        <p style="color: #91918b">Booking Menjadi Cepat dan Gampang!</p>
                     </div>
                 </div>
 				

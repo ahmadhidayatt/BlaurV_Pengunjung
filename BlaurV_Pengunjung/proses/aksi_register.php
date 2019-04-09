@@ -95,14 +95,14 @@ try {
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'hermawanandry29@gmail.com';                 // SMTP username
-    $mail->Password = 'andry077';                           // SMTP password
+    $mail->Username = 'akbarniko846@gmail.com';                 // SMTP username
+    $mail->Password = '03032018';               // SMTP password
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 	$mail->Port = 587; // or 587
 
 
-    $mail->SetFrom("scnd.hermawanandry29@gmail.com", "Admin E-Trip");
-    $mail->AddReplyTo("scnd.hermawanandry29@gmail.com", "Admin E-Trip");
+    $mail->SetFrom("scnd.akbarniko846@gmail.com", "Admin Blaur Vacation");
+    $mail->AddReplyTo("scnd.akbarniko846@gmail.com", "Admin Blaur Vacation");
     $mail->AddAddress($email); // you can't pass php variables in single goutes like '$userEmail'. 
     $mail->Subject = $subject;
     $mail->MsgHTML($content);

@@ -20,7 +20,7 @@ if ($ketemu > 0) {
     $username = $_SESSION['username'];
     $level = $_SESSION['level'];
     if ($row['level'] == "pegawai") {
-        header('location: ../../E_mounttrip_Pegawai/hal_pegawai.php');
+        header('location: ../../BlaurV_Pegawai/hal_pegawai.php');
     }
 	else{
         $_SESSION['nama'] = $row['nama'];

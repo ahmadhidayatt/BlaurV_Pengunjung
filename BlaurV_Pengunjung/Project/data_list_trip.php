@@ -53,6 +53,11 @@ img:hover {
 .image img{
     position:absolute;
 }
+        .back {
+            background-color: black;
+            opacity: 0.8;
+            filter: alpha(opacity=50); /* For IE8 and earlier */
+        }
 		</style>
     </head>
 
@@ -95,7 +100,7 @@ function CekPendaftaran($todays_date,$start_date,$end_date)
    }
 }
 //Cara memanggilnya
-$DATE_NOW= date("Y-m-d H:m:s");
+$DATE_NOW= date("Y-m-d");
 $START_DATE= $results2['tgl_awal'];
 $END_DATE= $results2['tgl_akhir'];
 $CekStatus=CekPendaftaran($DATE_NOW,$START_DATE,$END_DATE);
@@ -145,14 +150,14 @@ elseif($CekStatus==0) //0 SEDANG BUKA
                 while($results = mysqli_fetch_array($query)){   ?>
         <div style="margin-top: 10px;" class="banner">
 
-            <div class="banner-pos banner1">
+            <div class="banner-pos  back">
                 <center><h1>Informasi Trip</h1></center>
                 <div class="container" style="padding-top: 50px;">
                   <div class="popular-grids">
                 <div class="col-md-4 popular-grid animated wow slideInUp" data-wow-delay=".5s">
 				<div class="image">
                     <img src="<?php echo "../../BlaurV_pegawai/images/tiket/" . $results['gambar_gunung']; ?>" width="300" height="300" alt=" " class="img img-responsive full-width hover-shadow" onclick="openModal();currentSlide(<?php echo  $results['id_gunung'] ?>)" />
-                     <br/> <br/>
+                     <br/>
                      </div>
                      <center><h1><b></b></h1>
                 </div>
@@ -337,7 +342,7 @@ elseif($CekStatus==0) //0 SEDANG BUKA
                 while($results = mysqli_fetch_array($query)){   ?>
 				<div class="mySlides">
       <div class="column">
-      <img class="demo" src="<?php echo "../../BlaurV/images/tiket/" . $results['gambar_gunung']; ?>" onclick="currentSlide(<?php echo $results['id_gunung']?>)" alt="Nature">
+      <img class="demo" src="<?php echo "../../BlaurV_pegawai/images/tiket/" . $results['gambar_gunung']; ?>" onclick="currentSlide(<?php echo $results['id_gunung']?>)" alt="Nature">
     </div>
       <img src="<?php echo "../../BlaurV_pegawai/images/tiket/" . $results['gambar_gunung']; ?>" style="width:100%">
     </div>

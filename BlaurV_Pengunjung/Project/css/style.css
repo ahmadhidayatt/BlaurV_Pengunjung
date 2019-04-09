@@ -259,7 +259,7 @@ input:focus {
 /*-- //header-nav --*/
 /*-- banner --*/
 .banner1{
-	background-color: rgba(0, 246, 255, 0.03);
+    background:url(../images/opentrip.jpg) no-repeat center center fixed;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -268,7 +268,7 @@ input:focus {
 	min-height:1000px;
 }
 .banner01{
-	background:url(../images/opentrip.jpg) no-repeat 0px 0px;
+	background:url(../images/opentrip.jpg) no-repeat center center fixed;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -277,7 +277,7 @@ input:focus {
 	min-height:1000px;
 }
 .banner02{
-	background:url(../images/fopentrip.jpg) no-repeat 0px 0px;
+	background:url(../images/opentrip.jpg) no-repeat center center fixed;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -286,7 +286,7 @@ input:focus {
 	min-height:1000px;
 }
 .banner2{
-	background:url(../images/opentrip.png) no-repeat 0px 0px;
+	background:url(../images/opentrip.jpg) no-repeat center center fixed;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;

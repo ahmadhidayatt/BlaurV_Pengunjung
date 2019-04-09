@@ -10,71 +10,62 @@ require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 require 'vendor/autoload.php';
 
 
-
 //input data Pegawai
-if(isset($_POST['register-booking']))
-{
-	$id_pembeli			    = $_POST['id_pembelian'];
-	$id_paket				= $_POST['id_paket'];
-	$id_pengunjung			= $_POST['id_pengunjung'];
-	$tgl_pendaftaran			= $_POST['tgl_pendaftaran'];
-	$no_ktp	   		= $_POST['no_ktp'];
-	$no_telp   				= $_POST['no_telp'];
-	$email	    			= $_POST['email'];
-	$jumlah_beli	    	= $_POST['jumlah_pendaki'];
-	$nama_penonton1	    	= $_POST['nama_penonton1'];
-	$nama_penonton2	 		= $_POST['nama_penonton2'];
-	$nama_penonton3			= $_POST['nama_penonton3'];
-	$nama_penonton4	 		= $_POST['nama_penonton4'];
-	$harga          		= $_POST['harga'];
-	$jumlah_harga	        = $harga * $jumlah_beli;
-	$status       = $_POST['status'];
+if (isset($_POST['register-booking'])) {
+    $id_pembeli = $_POST['id_pembelian'];
+    $id_paket = $_POST['id_paket'];
+    $id_pengunjung = $_POST['id_pengunjung'];
+    $tgl_pendaftaran = $_POST['tgl_pendaftaran'];
+    $no_ktp = $_POST['no_ktp'];
+    $no_telp = $_POST['no_telp'];
+    $email = $_POST['email'];
+    $jumlah_beli = $_POST['jumlah_pendaki'];
+    $nama_penonton1 = $_POST['nama_penonton1'];
+    $nama_penonton2 = $_POST['nama_penonton2'];
+    $nama_penonton3 = $_POST['nama_penonton3'];
+    $nama_penonton4 = $_POST['nama_penonton4'];
+    $harga = $_POST['harga'];
+    $jumlah_harga = $harga * $jumlah_beli;
+    $status = $_POST['status'];
 
-$seed = str_split('123456789'); // and any other characters
+    $seed = str_split('123456789'); // and any other characters
     shuffle($seed); // probably optional since array_is randomized; this may be redundant
     $rand = '';
     foreach (array_rand($seed, 3) as $k) $rand .= $seed[$k];
- 
+
     echo $rand;
-     $new = substr($jumlah_harga, 0, -3) . $rand;
+    $new = substr($jumlah_harga, 0, -3) . $rand;
 
-  
 
-    
     $query = mysqli_query($connect, "INSERT INTO `tb_membayar_pendakian` (`id_boking`, `id_gunung`, `id_pengunjung`, `id_pegawai`, `status_pembayaran`, `tgl_pembayaran`, `total_harga`, `jumlah_pendaki`, `pendaki1`, `pendaki2`, `pendaki3`, `pendaki4`, `bukti_transfer`) VALUES ('$id_pembeli','$id_paket','$id_pengunjung','P0001','$status','$tgl_pendaftaran','$jumlah_harga','$jumlah_beli', '$nama_penonton1','$nama_penonton2','$nama_penonton3','$nama_penonton4', 'none.jpg')");
 
 //email 
-  
-	$res  = mysqli_query($connect,"SELECT tb_pengunjung.nama, tb_pengunjung.id_pengunjung, tb_pengunjung.email, tb_membayar_pendakian.id_boking, tb_paket_gunung.nama_paket,tb_paket_gunung.id_gunung, tb_paket_gunung.tgl_akhir FROM tb_pengunjung, tb_paket_gunung, tb_membayar_pendakian WHERE tb_pengunjung.id_pengunjung = tb_membayar_pendakian.id_pengunjung AND tb_paket_gunung.id_gunung = tb_membayar_pendakian.id_gunung and tb_membayar_pendakian.id_boking='$id_pembeli' ") or die(mysqli_error($connect));
 
-    
- 
+    $res = mysqli_query($connect, "SELECT tb_pengunjung.nama, tb_pengunjung.id_pengunjung, tb_pengunjung.email, tb_membayar_pendakian.id_boking, tb_paket_gunung.nama_paket,tb_paket_gunung.id_gunung, tb_paket_gunung.tgl_akhir FROM tb_pengunjung, tb_paket_gunung, tb_membayar_pendakian WHERE tb_pengunjung.id_pengunjung = tb_membayar_pendakian.id_pengunjung AND tb_paket_gunung.id_gunung = tb_membayar_pendakian.id_gunung and tb_membayar_pendakian.id_boking='$id_pembeli' ") or die(mysqli_error($connect));
+
+
     echo $rand;
 
-	if($res && mysqli_num_rows($res)>0)
-	{
-    $data = mysqli_fetch_assoc($res);
-    $userEmail				= $data['email']; // now this is your email id variable for user's email address.
-  	$nama 					= $data['nama'];	
-    $id_pembelian           = $data['id_boking'];
-    $id_gunung               = $data['id_gunung'];
-    $id_customer            = $data['id_pengunjung'];
-    $nama_paket           = $data['nama_paket'];
-    $tgl_akhir           = $data['tgl_akhir'];
-   
-	
+    if ($res && mysqli_num_rows($res) > 0) {
+        $data = mysqli_fetch_assoc($res);
+        $userEmail = $data['email']; // now this is your email id variable for user's email address.
+        $nama = $data['nama'];
+        $id_pembelian = $data['id_boking'];
+        $id_gunung = $data['id_gunung'];
+        $id_customer = $data['id_pengunjung'];
+        $nama_paket = $data['nama_paket'];
+        $tgl_akhir = $data['tgl_akhir'];
 
-   
-  
-   ob_start(); //STARTS THE OUTPUT BUFFER
-include('some_page.php');  //INCLUDES YOUR PHP PAGE AND EXECUTES THE PHP IN THE FILE
-$some_page_contents = ob_get_contents() ;  //PUT THE CONTENTS INTO A VARIABLE
-ob_clean();  //CLEAN OUT THE OUTPUT BUFFER
 
-    $mail = new PHPMailer(true);
-	try {
-    $subject = "Yo Ayoo! Segera Lakukan Pembayaran";
-	$content = '
+        ob_start(); //STARTS THE OUTPUT BUFFER
+        include('some_page.php');  //INCLUDES YOUR PHP PAGE AND EXECUTES THE PHP IN THE FILE
+        $some_page_contents = ob_get_contents();  //PUT THE CONTENTS INTO A VARIABLE
+        ob_clean();  //CLEAN OUT THE OUTPUT BUFFER
+
+        $mail = new PHPMailer(true);
+        try {
+            $subject = "Yo Ayoo! Segera Lakukan Pembayaran";
+            $content = '
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -184,7 +175,7 @@ display: inline-block;
             padding-bottom: 0;
             color: #FFFFFF;
             font-family: sans-serif;" class="supheader">
-                Hallo '. $nama .' 
+                Hallo ' . $nama . ' 
         </td>
     </tr>
 
@@ -233,7 +224,7 @@ display: inline-block;
             padding-top: 15px; 
             color: #FFFFFF;
             font-family: sans-serif;" class="paragraph">
-                Dengan Jumlah Pembayaran : Rp.'.$new.'
+                Dengan Jumlah Pembayaran : Rp.' . $new . '
         </td>
     </tr>
 
@@ -242,7 +233,7 @@ display: inline-block;
             padding-top: 15px; 
             color: #FFFFFF;
             font-family: sans-serif;" class="paragraph">
-                Atas Nama : Muhammad Fadhil
+                Atas Nama : Akbar Niko
         </td>
     </tr>
     <br/>
@@ -265,7 +256,7 @@ display: inline-block;
             padding-top: 15px; 
             color: #FFFFFF;
             font-family: sans-serif;" class="paragraph">
-                Nama Pemesan : '.$nama.'
+                Nama Pemesan : ' . $nama . '
         </td>
     </tr>
     
@@ -274,7 +265,7 @@ display: inline-block;
             padding-top: 15px; 
             color: #FFFFFF;
             font-family: sans-serif;" class="paragraph">
-                Kode Booking : '.$id_pembelian.'
+                Kode Booking : ' . $id_pembelian . '
         </td>
     </tr>
     
@@ -283,7 +274,7 @@ display: inline-block;
             padding-top: 15px; 
             color: #FFFFFF;
             font-family: sans-serif;" class="paragraph">
-                Jumlah Pengunjung : '.$jumlah_beli.' Pengunjung
+                Jumlah Pengunjung : ' . $jumlah_beli . ' Pengunjung
         </td>
     </tr>
     
@@ -292,7 +283,7 @@ display: inline-block;
             padding-top: 15px; 
             color: #FFFFFF;
             font-family: sans-serif;" class="paragraph">
-                Nama Paket Trip Anda : '.$nama_paket.' 
+                Nama Paket Trip Anda : ' . $nama_paket . ' 
         </td>
     </tr>
     
@@ -302,7 +293,7 @@ display: inline-block;
             padding-top: 15px; 
             color: #FFFFFF;
             font-family: sans-serif;" class="paragraph">
-                Tanggal Perjalanan : '.$tgl_akhir.' 
+                Tanggal Perjalanan : ' . $tgl_akhir . ' 
         </td>
     </tr>
    
@@ -364,46 +355,39 @@ display: inline-block;
 </body>
 </html>';
 
-    
 
-     //Server settings
-    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
-    $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'hermawanandry29@gmail.com';                 // SMTP username
-    $mail->Password = 'andry077';                           // SMTP password
-    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-	$mail->Port = 587; // or 587
+            //Server settings
+            $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = 'akbarniko846@gmail.com';                 // SMTP username
+            $mail->Password = '03032018';                       // SMTP password
+            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 587; // or 587
 
 
-    $mail->SetFrom("scnd.hermawanandry29@gmail.com", "Admin E-Trip");
-    $mail->AddReplyTo("scnd.hermawanandry29@gmail.com", "Admin E-Trip");
-    $mail->AddAddress($userEmail); // you can't pass php variables in single goutes like '$userEmail'. 
-    $mail->Subject = $subject;
-    $mail->MsgHTML($content);
-    $mail->IsHTML(true);
-	if(!$mail->Send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
-	} else {
-    echo 'Message has been sent to '; 
-    echo $userEmail;
-    echo "<br/>";
-   echo "<script>alert('Data Booking berhasil'); window.location = '../Project/hal_user_bookinglist.php'</script>";	
-	}
-	} catch (Exception $e) {
-	    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-	}
+            $mail->SetFrom("scnd.akbarniko846@gmail.com", "Admin E-Trip");
+            $mail->AddReplyTo("scnd.akbarniko846@gmail.com", "Admin E-Trip");
+            $mail->AddAddress($userEmail); // you can't pass php variables in single goutes like '$userEmail'.
+            $mail->Subject = $subject;
+            $mail->MsgHTML($content);
+            $mail->IsHTML(true);
+            if (!$mail->Send()) {
+                echo "Mailer Error: " . $mail->ErrorInfo;
+            } else {
+                echo 'Message has been sent to ';
+                echo $userEmail;
+                echo "<br/>";
+                echo "<script>alert('Data Booking berhasil'); window.location = '../Project/hal_user_bookinglist.php'</script>";
+            }
+        } catch (Exception $e) {
+            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+        }
+    }
+
+
 }
-   
 
 
-	
- }
-
-
-
-
-
-
- ?>
+?>
