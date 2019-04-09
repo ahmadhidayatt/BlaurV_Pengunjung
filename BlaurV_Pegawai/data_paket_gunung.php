@@ -70,7 +70,7 @@ include"config/koneksi.php";
 										<td><?php echo $rows['tgl_akhir']; ?></td>
                                         <td align="center"><img src="images/tiket/<?php echo $rows['gambar_gunung'];?>"  width="100" height="120"> <br/>
 										<td>  <a class="btn btn-sm btn-primary" href="data_pembayaran_tolak.php?id_tiket=<?php echo $rows['id_gunung']; ?>"><i class="fa fa-edit"></i> Details</a>
-											<a class="btn btn-sm btn-primary" href="edit_tiket.php?id_tiket=<?php echo $rows['id_gunung']; ?>"><i class="fa fa-edit"></i> Edit</a>
+											<a class="btn btn-sm btn-primary" href="edit_paket.php?id_tiket=<?php echo $rows['id_gunung']; ?>"><i class="fa fa-edit"></i> Edit</a>
 										<a class="btn btn-sm btn-primary" href="delete_tiket.php?id_tiket=<?php echo $rows['id_gunung']; ?>" onclick ="return confirm('Anda yakin ingin menghapus ?');" title="Delete"><i class="fa fa-search"</i> Delete</a>
 										</td>
 											</tr>
@@ -134,7 +134,7 @@ include"config/koneksi.php";
            
             <hr>
             <footer>
-                <p>&copy; Vincent Gabriel 2013</p>
+                <p>&copy; Niko A Marsudi</p>
             </footer>
         </div>
         

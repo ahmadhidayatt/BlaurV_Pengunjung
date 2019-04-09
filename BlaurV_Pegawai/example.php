@@ -62,7 +62,7 @@
 <script id="_carbonads_projs" type="text/javascript" src="https://srv.carbonads.net/ads/CK7DC27M.json?segment=placement:picsumphotos&amp;callback=_carbonads_go"></script></head>
 <body>
   <!-- Header -->
-  <div class="intro-header" style="background-image: url(../../E_mounttrip_Pegawai/images/tiket/PulauUntungJawa-3DKaGS2hs.jpg);">
+  <div class="intro-header" style="background-image: url(../../Blaur/BlaurV_Pegawai/images/tiket/PulauUntungJawa-3DKaGS2hs.jpg);">
     <div class="overlay">
       <div class="container">
         <div class="row">

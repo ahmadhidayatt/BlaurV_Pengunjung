@@ -9,7 +9,7 @@ include"config/koneksi.php";
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-        <link href="vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">
+
         <link href="assets/styles.css" rel="stylesheet" media="screen">
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -28,7 +28,7 @@ include"config/koneksi.php";
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Form Data Tiket</div>
+                                <div class="muted pull-left">Form Data Paket</div>
                             </div>
 							  <?php
 								$hasil = mysqli_query($connect,"SELECT max(id_gunung) as idMaks FROM tb_paket_gunung");
@@ -43,7 +43,7 @@ include"config/koneksi.php";
                                 <div class="span12">
                                     <form class="form-horizontal" action="aksi_tiket.php" method="POST" enctype="multipart/form-data">
                                       <fieldset>
-                                        <legend>Data Tiket</legend>
+                                        <legend>Data Paket</legend>
                                         <div class="control-group">
                                           <label class="control-label">ID Paket pulau </label>
                                           <div class="controls">
@@ -67,13 +67,13 @@ include"config/koneksi.php";
 										<div class="control-group">
                                           <label class="control-label">Nama Paket</label> 
                                           <div class="controls">
-                                            <input type="text" class="span6" name="jam_pertandingan">
+                                            <input type="text" class="span6" name="Nama">
                                           </div>
                                         </div>
 										<div class="control-group">
                                           <label class="control-label">Harga</label>
                                           <div class="controls">
-                                            <input type="text" class="span6" name="tim_tuanrumah" >
+                                            <input type="text" class="span6" name="Harga" >
                                           </div>
                                         </div>
 										 <div class="control-group">
@@ -85,7 +85,7 @@ include"config/koneksi.php";
 										<div class="control-group">
                                           <label class="control-label">Informasi pulau</label>
                                           <div class="controls">
-                                            <textarea type="text" class="span6" name="tim_tamu"></textarea> 
+                                            <textarea type="text" class="span6" name="Informasi"></textarea>
                                           </div>
                                         </div>
 										 <div class="control-group">
@@ -134,40 +134,13 @@ include"config/koneksi.php";
 
 	<script type="text/javascript" src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
 	<script src="assets/form-validation.js"></script>
-        
+
 	<script src="assets/scripts.js"></script>
         <script>
 
-	jQuery(document).ready(function() {   
+	jQuery(document).ready(function() {
 	   FormValidation.init();
 	});
-	
 
-        $(function() {
-            $(".datepicker").datepicker();
-            $(".uniform_on").uniform();
-            $(".chzn-select").chosen();
-            $('.textarea').wysihtml5();
-
-            $('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
-                var $total = navigation.find('li').length;
-                var $current = index+1;
-                var $percent = ($current/$total) * 100;
-                $('#rootwizard').find('.bar').css({width:$percent+'%'});
-                // If it's the last tab then hide the last button and show the finish instead
-                if($current >= $total) {
-                    $('#rootwizard').find('.pager .next').hide();
-                    $('#rootwizard').find('.pager .finish').show();
-                    $('#rootwizard').find('.pager .finish').removeClass('disabled');
-                } else {
-                    $('#rootwizard').find('.pager .next').show();
-                    $('#rootwizard').find('.pager .finish').hide();
-                }
-            }});
-            $('#rootwizard .finish').click(function() {
-                alert('Finished!, Starting over!');
-                $('#rootwizard').find("a[href*='tab1']").trigger('click');
-            });
-        });
         </script>
 

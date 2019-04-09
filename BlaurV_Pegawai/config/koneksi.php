@@ -2,7 +2,7 @@
 $server		= "localhost:3306";
 $username	= "root";
 $password	= "";
-$db			= "db_trip";
+$db			= "blaur_vact";
 
 $connect	= new mysqli($server,$username,$password,$db) or die (mysql_error());
 ?>

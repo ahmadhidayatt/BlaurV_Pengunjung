@@ -41,7 +41,7 @@ session_start();
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a tabindex="-1" href="../E_mounttrip_Pengunjung/proses/logout.php">Logout</a>
+                                        <a tabindex="-1" href="../BlaurV_Pengunjung/proses/logout.php">Logout</a>
                                     </li>
                                 </ul>
                             </li>

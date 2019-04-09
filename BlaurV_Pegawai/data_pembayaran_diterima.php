@@ -67,7 +67,7 @@ include"config/koneksi.php";
 										<td><?php echo $rows['email']; ?></td>
 										<td><?php echo $rows['tgl_pembayaran']; ?></td>
 										<td><?php echo $rows['status_pembayaran']; ?></td>
-                                        <td align="center"><img src="../E_mounttrip_Pengunjung/Bukti TF/<?php echo $rows['bukti_transfer'];?>"  width="100" height="120"></td>
+                                        <td align="center"><img src="../BlaurV_Pengunjung/Bukti TF/<?php echo $rows['bukti_transfer'];?>"  width="100" height="120"></td>
 											</tr>
 											<?php }?>
 											
