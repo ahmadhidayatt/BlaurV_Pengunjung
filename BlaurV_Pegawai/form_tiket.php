@@ -142,5 +142,10 @@ include"config/koneksi.php";
 	   FormValidation.init();
 	});
 
+
+        $(function() {
+            $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
+
+        });
         </script>
 

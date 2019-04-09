@@ -4,6 +4,7 @@ include "config/koneksi.php";
 //input data Pegawai
 if(isset($_POST['insert_tiket']))
 {
+echo "sini";
 	$id_tiket			= $_POST['id_tiket'];
 	$tgl_pertandingan	= $_POST['tgl_pertandingan'];
 	$tgl_setelah_pertandingan	= $_POST['tgl_setelah_pertandingan'];
@@ -16,11 +17,20 @@ if(isset($_POST['insert_tiket']))
 	$folder				= "images/tiket/";
     $include =$_POST['include'];
 
-	
+    echo "sini";
 
         move_uploaded_file($_FILES['logo_tuanrumah']['tmp_name'], $folder.$logo_tuanrumah);
-	$query = mysqli_query($connect, "INSERT INTO `tb_paket_gunung` (`id_gunung`, `id_pegawai`, `nama_paket`, `harga`, `status_kuota`, `tgl_awal`, `tgl_akhir`, `gambar_gunung`, `informasi_gunung`, `include`) values('$id_tiket', 'P001','$Nama','$Harga','$status_kuota','$tgl_pertandingan','$tgl_setelah_pertandingan','$logo_tuanrumah','$Informasi','$include')");
+	$query = mysqli_query($connect, "INSERT INTO tb_paket_gunung (id_gunung, id_pegawai, nama_paket, harga, status_kuota, tgl_awal, tgl_akhir, gambar_gunung, informasi_gunung, include) values('$id_tiket', 'P0001','$Nama','$Harga','$status_kuota','$tgl_pertandingan','$tgl_setelah_pertandingan','$logo_tuanrumah','$Informasi','$include')");
 //	header('location:data_paket_gunung.php');
+ echo "INSERT INTO tb_paket_gunung (id_gunung, id_pegawai, nama_paket, harga, status_kuota, tgl_awal, tgl_akhir, gambar_gunung, informasi_gunung, include) values('$id_tiket', 'P001','$Nama','$Harga','$status_kuota','$tgl_pertandingan','$tgl_setelah_pertandingan','$logo_tuanrumah','$Informasi','$include')";
+    if($query) // will return true if succefull else it will return false
+    {
+        header('location:data_paket_gunung.php');
+        echo $query ;
+    }
+    else{
+        echo "gagal , harap back halaman kembali";
+	}
 
 
 }
