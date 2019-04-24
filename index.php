@@ -2,7 +2,7 @@
 <html class="no-js">
     
     <head>
-        <title>Admin Home PAGE</title>
+        <title>Admin Home Pagess</title>
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
