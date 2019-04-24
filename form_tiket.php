@@ -5,7 +5,7 @@ date_default_timezone_set('Asia/Jakarta');
 include"config/koneksi.php";
 ?>
     <head>
-        <title>Admin Home page</title>
+        <title>Admin Home pages</title>
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
