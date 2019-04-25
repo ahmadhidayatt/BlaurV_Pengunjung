@@ -183,7 +183,7 @@ elseif($CekStatus==0) //0 SEDANG BUKA
                 </div>
             
                 <div class="clearfix">
-                    <b>Informasi Gunung : <?php echo $results['informasi_gunung']?></b>
+                    <b>Informasi Trip : <?php echo $results['informasi_gunung']?></b>
                 </div>
                 <b><hr/><br/>
                 
