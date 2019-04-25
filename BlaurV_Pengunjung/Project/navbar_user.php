@@ -42,7 +42,8 @@
 					 <li ><a href="data_list_trip.php">List Trip</a></li> <!-- Data Pertandingan-->
                     <li><a href="hal_user_bookinglist.php">My Booking List</a></li> <!--hal_user_bookinglist.php -->
 					<li><a href="konfirmasi_pembayaran.php">Payment</a></li> <!--hal_user_bookinglist.php -->
-					 <li><a href="hal_cetak_etiket.php">E-Ticket Trip</a></li> <!--hal_cetak_tiket.php -->
+					 <li><a href="hal_cetak_etiket.php">E-Ticket Trip</a></li> 
+			 <li><a href="login.php">Logout</a></li> <!--hal_cetak_tiket.php -->
                 </ul>
             </div><!-- /.navbar-collapse -->	
         </nav>
